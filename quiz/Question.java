@@ -1,3 +1,5 @@
+package quiz;
+
 public class Question {
     private int id;
     private String question;
