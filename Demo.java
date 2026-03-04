@@ -1,17 +1,21 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Demo {
-    public static void main(String[] args) throws NumberFormatException, IOException {
-        int num = 0;
-        BufferedReader br = null;
-        try {
-            br = new BufferedReader(new InputStreamReader(System.in));
-            num = Integer.parseInt(br.readLine());
-            System.out.println(num);
-        } finally {
-            br.close();
+    public static void main(String[] args) {
+
+        Set<Integer> nums = new HashSet<Integer>();
+        nums.add(6);
+        nums.add(5);
+        nums.add(8);
+        nums.add(2);
+        nums.add(6);
+        // nums.add("5");
+
+        for (int n : nums) {
+            System.out.println(n);
         }
+
     }
 }
