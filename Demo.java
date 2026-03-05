@@ -1,21 +1,44 @@
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.Comparator;
+import java.util.List;
+
+class Student {
+    int age;
+    String name;
+
+    public Student(int age, String name) {
+        this.age = age;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Student [age=" + age + ", name=" + name + "]";
+    }
+
+}
 
 public class Demo {
     public static void main(String[] args) {
 
-        Set<Integer> nums = new HashSet<Integer>();
-        nums.add(6);
-        nums.add(5);
-        nums.add(8);
-        nums.add(2);
-        nums.add(6);
-        // nums.add("5");
+        Comparator<Student> com = new Comparator<Student>() {
+            public int compare(Student i, Student j) {
+                if (i.age > j.age)
+                    return 1;
+                else
+                    return -1;
+            }
+        };
 
-        for (int n : nums) {
-            System.out.println(n);
-        }
+        List<Student> studs = new ArrayList<>();
+        studs.add(new Student(21, "Navin"));
+        studs.add(new Student(12, "John"));
+        studs.add(new Student(18, "Parul"));
+        studs.add(new Student(20, "Kiran"));
+
+        // Collections.sort(nums, com);
+        for (Student s : studs)
+            System.out.println(s);
 
     }
 }
