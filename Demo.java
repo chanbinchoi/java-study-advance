@@ -1,44 +1,16 @@
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.Arrays;
 import java.util.List;
-
-class Student {
-    int age;
-    String name;
-
-    public Student(int age, String name) {
-        this.age = age;
-        this.name = name;
-    }
-
-    @Override
-    public String toString() {
-        return "Student [age=" + age + ", name=" + name + "]";
-    }
-}
+import java.util.stream.Stream;
 
 public class Demo {
     public static void main(String[] args) {
+        List<Integer> nums = Arrays.asList(4, 5, 7, 3, 2, 6);
 
-        Comparator<Student> com = new Comparator<Student>() {
-            public int compare(Student i, Student j) {
-                if (i.age > j.age)
-                    return 1;
-                else
-                    return -1;
-            }
-        };
+        Stream<Integer> sortedValues = nums.parallelStream()
+                .filter(n -> n % 2 == 0)
+                .sorted();
 
-        List<Student> studs = new ArrayList<>();
-        studs.add(new Student(21, "Navin"));
-        studs.add(new Student(12, "John"));
-        studs.add(new Student(18, "Parul"));
-        studs.add(new Student(20, "Kiran"));
+        sortedValues.forEach(n -> System.out.println(n));
 
-        // 정렬을 실제로 하려면 아래 추가:
-        // studs.sort(com);
-
-        for (Student s : studs)
-            System.out.println(s);
-    }
-}
+    };
+};
